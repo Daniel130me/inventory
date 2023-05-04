@@ -1,0 +1,37 @@
+{% extends 'components/base.html' %}
+{% block title %}Profile {% endblock %}
+{% block content %}
+<!--Table-->
+   <div class="container" id="profile_details"></div>
+<!--End Table-->
+<div class="modal fade" id="profile_update_modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+                <form class="form-profile-update" action="/profile/" method="post" enctype="multipart/form-data">
+                    {%  csrf_token %}
+                    <div class="form-group">
+                        <label for="username">Username</label>
+                        <input type="text" class="form-control" name="username" value="{{ user.username }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" class="form-control" name="email" value="{{ user.email }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="phone">Phone number</label>
+                        <input type="text" class="form-control" name="phone" value="{{ user.profile.phone }}" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="address">Address</label>
+                        <input type="text" class="form-control" name="address" value="{{ user.profile.address }}" required>
+                    </div>
+                    <a class="btn text-primary" data-dismiss="modal">Cancel</a>
+                    <input type="submit" class="btn btn-primary submit_btn" value="Update">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

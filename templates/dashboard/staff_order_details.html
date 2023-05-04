@@ -1,0 +1,30 @@
+<div class="card">
+    <div class="card-header">
+        Orders Records
+    </div>
+    <div class="card-body">
+        <table class="table bg-white">
+            <thead class="bg-info text-white">
+                <tr>
+                    <th scope="col">Product</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Date ordered</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for order in order_data %}
+                {% if order.staff == request.user %}
+                <tr>
+                    <td>{{ order.product.name }}</td>
+                    <td>{{ order.product.category }}</td>
+                    <td>{{ order.quantity }}</td>
+                    <td>{{ order.date_odered }}</td>
+                </tr>
+                {% endif %}
+                {% endfor %}
+                
+            </tbody>
+        </table>
+    </div>
+</div>

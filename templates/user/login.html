@@ -1,0 +1,14 @@
+{% extends 'components/base.html' %}
+{% block title %}Dashboard {% endblock %}
+{% block content %}
+
+<div class="container">
+    <form id="login-form" action="/login/" class="form" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p class="error-message"></p>
+        <input type="submit" class="submit_btn" id="login_btn" class="btn btn-primary" value="Login">
+    </form>
+  
+</div>
+{% endblock %}

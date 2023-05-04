@@ -1,0 +1,63 @@
+{% extends 'components/base.html' %}
+{% block title %}Dashboard {% endblock %}
+
+{% block content %}
+
+
+    <div class="container">
+        <h1>Register</h1>
+        <form id="register-fo" action="/register/" class="form" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username"><br>
+    
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email"><br>
+    
+            <label for="password1">Password:</label>
+            <input type="password" id="password1" name="password1"><br>
+    
+            <label for="password2">Confirm Password:</label>
+            <input type="password" id="password2" name="password2"><br>
+                    
+            <p class="error-message"></p>
+            <button type="submit" class="submit_btn" id="register-btn">Register</button>
+        </form>
+    </div>
+
+<!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script> -->
+<script>
+    // $(document).ready(function() {
+    //     $('#registration-form').on('submit', function(event) {
+    //         event.preventDefault();
+    //         var formData = new FormData(this);
+    //         $.ajax({
+    //             url: '/register/',
+    //             type: 'POST',
+    //             data: formData,
+    //             processData: false,
+    //             contentType: false,
+    //             success: function(response) {
+    //                 if (response.success) {
+    //                     alert('Registration successful!');
+    //                     window.location.href = '/';  // redirect to home page
+    //                 } else {
+    //                     var errors = JSON.parse(response.errors);
+    //                     $.each(errors, function(field, messages) {
+    //                         var $input = $('[name="'+field+'"]');
+    //                         $input.closest('.form-group').addClass('has-error');
+    //                         $input.after('<span class="help-block">'+messages+'</span>');
+    //                     });
+    //                 }
+    //             },
+    //             error: function(xhr, status, error) {
+    //                 console.log(xhr.responseText);
+    //             }
+    //         });
+    //     });
+    // });
+</script>
+
+
+{% endblock %}
+

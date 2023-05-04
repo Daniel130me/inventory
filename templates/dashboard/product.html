@@ -1,0 +1,69 @@
+{% extends 'components/base.html' %}
+{% block title %}Product {% endblock %}
+{% block content %}
+{% include 'components/topnav.html' %}
+  <!--Table-->
+  <div class="container">
+    <div class="row my-4">
+        <div class="col-md-4">
+            <div class="border bg-white p-3">
+                <h4>Add Products</h4>
+                <hr>
+                <form class="product_form" action="/product/">
+                    {% csrf_token %}
+                    {{ form.as_p }}
+                    <input class="btn btn-success btn-block submit_btn" type="submit" value="Add Product">
+
+                </form>
+            </div>
+        </div>
+        <div class="col-md-8" id="product_details">
+            
+        </div>
+    </div>
+
+</div>
+<div class="modal" id="product_edit_modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body" id="nn">
+                <form action="/product_update/" method="post" class="product_update_form">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" id="pr_id">
+                    <div class="form-group">
+                        <label for="id_name">Name:</label>
+                        <input type="text" name="name" id="pr_name">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="id_quantity">Quantity:</label>
+                        <input type="number" name="quantity" min="0" required="" id="pr_quantity">
+                    </div>
+                    <div class="form-group">
+                        <label for="id_category">Category:</label>
+                        <select name="category" required="" id="pr_category">
+                          <option value="" selected="">---------</option>
+                          <option value="stationary">stationary</option>
+                          <option value="Electronic">Electronic</option>
+                          <option value="Food">Food</option>
+                        </select>
+                    </div>
+                    <input class="btn btn-success btn-block submit_btn" type="submit" value="Update Product">
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal" id="product_delete_modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-body">
+              <p>This Information will be deleted permamnently.</p>
+              <p>Do you want to proceed?</p>
+              <a class="btn" data-dismiss="modal">No</a>
+              <a class="btn btn-primary" id="delete_modal_btn" data-id="">Yes</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

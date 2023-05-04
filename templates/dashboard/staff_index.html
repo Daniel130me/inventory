@@ -1,0 +1,22 @@
+
+<div>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-header">
+                    Make Request
+                </div>
+                <div class="card-body">
+                    <form method="POST" action="" class="order_request_form">
+                        {% csrf_token %}
+                        {{ form }}
+                        <input class="btn btn-info btn-block submit_btn" type="submit" value="Make Request">
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-8" id="staff_order_details">
+            
+        </div>
+    </div>
+</div>

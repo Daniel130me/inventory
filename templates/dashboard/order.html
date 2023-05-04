@@ -1,0 +1,44 @@
+{% extends 'components/base.html' %}
+{% block title %}Order {% endblock %}
+{% block content %}
+{% include 'components/topnav.html' %}
+ <!--Table-->
+ <div class="container">
+    <div class="row my-4">
+        <div class="col-md-4">
+
+        </div>
+        <div class="col-md-8">
+            <table class="table bg-white">
+                <thead class="bg-info">
+                    <tr class="text-white">
+                        <th scope="col">#</th>
+                        <th scope="col">Product</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Ordered by</th>
+                        <th scope="col">Date ordered</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for order in order_data %}
+                    <tr>
+                        <th scope="row">{{ order.product.id }}</th>
+                        <td>{{ order.product.name }}</td>
+                        <td>{{ order.product.category }}</td>
+                        <td>{{ order.quantity }}</td>
+                        <td>{{ order.staff.username }}</td>
+                        <td>{{ order.date_odered }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+
+
+<!--End Table-->
+{% endblock %}

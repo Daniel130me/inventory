@@ -1,0 +1,80 @@
+{% extends 'components/base.html' %}
+{% block title %}Staff {% endblock %}
+{% block content %}
+{% include 'components/topnav.html' %}
+    <!--Table-->
+    <div class="container">
+        <div class="row my-4">
+            <div class="col-md-4"></div>
+            <div class="col-md-8">
+                <table class="table bg-white">
+                    <thead class="bg-info">
+                        <tr class="text-white">
+                            <th scope="col">#</th>
+                            <th scope="col">Username</th>
+                            <th scope="col">Email</th>
+                            <th scope="col">Phone</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for staff in staff_data %}
+                        <tr>
+                            <th scope="row"><a class="btn btn-info btn-sm" onclick="get_staff_data('{{ staff.id }}','{{ staff.username }}','{{ staff.email }}','{{ staff.profile.phone }}','{{ staff.profile.address }}')">View</a></th>
+                            <td>{{ staff.username }}</td>
+                            <td>{{ staff.email }}</td>
+                            <td>{{ staff.profile.phone }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="modal" id="staff_details_modal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <div class="card m-0">
+                        <div class="card-header bg-info text-white">
+                            Profile
+                        </div>
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <table class="table bg-white table-borderless">
+                                        <tbody>
+                                            <tr>
+                                                <th scope="row">Name</th>
+                                                <td id="staff_username"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Email</th>
+                                                <td id="staff_email"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Phone</th>
+                                                <td id="staff_phone"></td>
+                                            </tr>
+                                            <tr>
+                                                <th scope="row">Address</th>
+                                                <td id="staff_address"></td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+            
+                                </div>
+                                <div class="col-md-4">
+                                    <img class="img-thumbnail" src="./media/profile-img1.jpg" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!--End Table-->
+{% endblock %}
